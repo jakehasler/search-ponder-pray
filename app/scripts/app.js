@@ -21,7 +21,7 @@ angular
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/cards.html',
+        templateUrl: 'views/select.html',
         controller: 'MainCtrl',
         controllerAs: 'main'
       })
