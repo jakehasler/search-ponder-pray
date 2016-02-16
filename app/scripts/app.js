@@ -18,12 +18,17 @@ angular
     'ngMaterial',
     'ngMdIcons'
   ])
-  .config(function ($routeProvider) {
+  .config(function ($routeProvider, $locationProvider, $httpProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/select.html',
         controller: 'MainCtrl',
         controllerAs: 'main'
+      })
+      .when('/compare/:v1/:v2/:book/:chapter/:verse', {
+        templateUrl: 'views/compare.html',
+        controller: 'CompareCtrl',
+        conrollerAs: 'compare'
       })
       .when('/about', {
         templateUrl: 'views/about.html',
@@ -33,4 +38,10 @@ angular
       .otherwise({
         redirectTo: '/'
       });
+
+      $httpProvider.defaults.useXDomain = true;
+      $httpProvider.defaults.withCredentials = false;
+      delete $httpProvider.defaults.headers.common["X-Requested-With"];
+      $httpProvider.defaults.headers.common["Accept"] = "application/json";
+      $httpProvider.defaults.headers.common["Content-Type"] = "application/json";
   });

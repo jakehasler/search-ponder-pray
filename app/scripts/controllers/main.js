@@ -8,7 +8,7 @@
  * Controller of the sppApp
  */
 angular.module('sppApp')
-  .controller('MainCtrl', function ($scope, $http, $parse) {
+  .controller('MainCtrl', function ($scope, $http, $location) {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -94,8 +94,6 @@ angular.module('sppApp')
 
     // https://api.biblia.com/v1/bible/content/KJV1900.txt?style=oneVersePerLine&passage=John5&key=659e75ea18d73db9a183c49008b26300
     $scope.getVerses = function(book, chapter) {
-      console.log(book);
-      console.log(chapter);
       var url = "https://api.biblia.com/v1/bible/content/KJV1900.txt?style=oneVersePerLine&passage=";
       var key = "&key=" + BIBLIA_KEY;
       $http.get(url + book + chapter + key).then(function success(res) {
@@ -112,7 +110,6 @@ angular.module('sppApp')
 
     getBooksAndChapters();
 
-
     $scope.getChapters = function(book) {
       for (var i = 0; i < $scope.books.length; i++) {
         if($scope.books[i].passage === book) {
@@ -126,6 +123,17 @@ angular.module('sppApp')
       };
 
     };
+
+    $scope.compareView = function() {
+      // if($scope.version1 && $scope.version2 && $scope.book && $scope.chapter && $scope.verse) {   
+        var url = '/compare/' + $scope.version1 + '/' + $scope.version2 + '/' + $scope.book + '/' + $scope.chapter + '/' + $scope.verse;
+        console.log(url);
+        $location.path(url).replace();
+      // }
+      // else {
+      //   alert("Please Select the Options!");
+      // }
+    }
 
 
 

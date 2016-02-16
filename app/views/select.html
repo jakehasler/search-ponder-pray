@@ -17,13 +17,13 @@
 		<div layout-align="center center" flex-xs flex-gt-xs="30">
 			<md-input-container style="margin-right: 100px;">
 		        <label>Version 1</label>
-		        <md-select ng-model="versionsObj">
+		        <md-select ng-model="version1">
 		          <md-option ng-repeat="version in versionsObj" ng-value="version.value">{{ version.option }}</md-option>
 		        </md-select>
 		      </md-input-container>
 		      <md-input-container style="margin-right: 100px;">
 		        <label>Version 2</label>
-		        <md-select ng-model="versionsObj">
+		        <md-select ng-model="version2">
 		          <md-option ng-repeat="version in versionsObj" ng-value="version.value">{{ version.option }}</md-option>
 		        </md-select>
 		      </md-input-container>
@@ -61,7 +61,7 @@
 	<div flex-xs flex-gt-xs="50" layout="column">
 		<h3 class="md-title">3. Click "GO" to Compare!</h3>
 		<section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-			<md-button class="md-raised md-primary">GO</md-button>
+			<md-button ng-click="compareView()" class="md-raised md-primary">GO</md-button>
 		</section>
 	</div>
 </md-content>
