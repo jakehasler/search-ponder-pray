@@ -8,7 +8,7 @@
  * Controller of the sppApp
  */
 angular.module('sppApp')
-  .controller('MainCtrl', function ($scope, $http) {
+  .controller('MainCtrl', function ($scope, $http, $parse) {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -80,15 +80,34 @@ angular.module('sppApp')
 
     var BASE_URL = 'http://getbible.net/json?';
 
-
+    //http://bibliaapi.com/docs/Table_of_Contents
+    //https://getbible.net/api
 
     var getBooksAndChapters = function() {
-      var url = 'https://api.biblia.com/v1/bible/contents/KJV1900'
+      var url = 'https://api.biblia.com/v1/bible/contents/KJV1900';
       var key = "?key=" + BIBLIA_KEY;
 
       $http.get(url + key).then(function success(res) {
         $scope.books = res.data.books;
       });
+    }
+
+    // https://api.biblia.com/v1/bible/content/KJV1900.txt?style=oneVersePerLine&passage=John5&key=659e75ea18d73db9a183c49008b26300
+    $scope.getVerses = function(book, chapter) {
+      console.log(book);
+      console.log(chapter);
+      var url = "https://api.biblia.com/v1/bible/content/KJV1900.txt?style=oneVersePerLine&passage=";
+      var key = "&key=" + BIBLIA_KEY;
+      $http.get(url + book + chapter + key).then(function success(res) {
+        $scope.currVerses = res;
+        // console.log(res.data);
+        var lines = res.data.split('\n');
+        $scope.verses = [];
+        for (var i = 0; i < lines.length; i++) {
+          $scope.verses.push(i);
+        }
+      })
+
     }
 
     getBooksAndChapters();
@@ -105,6 +124,7 @@ angular.module('sppApp')
       for (var i = 0; i < $scope.chapters.length; i++) {
         $scope.chapterNums.push(i);
       };
+
     };
 
 
