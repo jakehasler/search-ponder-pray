@@ -1,0 +1,67 @@
+<md-content class="md-padding" layout-xs="column" layout="row" layout-align="center center">
+	<div flex-xs flex-gt-xs="50" layout="column">
+		<md-card>
+		<md-card-title>
+	          <md-card-title-text>
+	            <span class="md-headline">Search • Ponder • Pray</span>
+	            <p>The purpose is so that you can thoroughly investigate the bible and its verses. Through sincere prayer and investigation, you can seek the revelation you need to further understand what God’s word has in store for you.</p>
+	          </md-card-title-text>
+	        </md-card-title>
+		</md-card>
+	</div>
+
+</md-content>
+<md-content class="md-padding" layout="row" layout-align="center center">
+	<div flex-xs flex-gt-xs="50" layout="column">
+		<h3 class="md-title">1. Choose Your Bible Translations</h3>
+		<div layout-align="center center" flex-xs flex-gt-xs="30">
+			<md-input-container style="margin-right: 100px;">
+		        <label>Version 1</label>
+		        <md-select ng-model="versionsObj">
+		          <md-option ng-repeat="version in versionsObj" ng-value="version.value">{{ version.option }}</md-option>
+		        </md-select>
+		      </md-input-container>
+		      <md-input-container style="margin-right: 100px;">
+		        <label>Version 2</label>
+		        <md-select ng-model="versionsObj">
+		          <md-option ng-repeat="version in versionsObj" ng-value="version.value">{{ version.option }}</md-option>
+		        </md-select>
+		      </md-input-container>
+		</div>
+		<p ng-if="version2">You selected the {{ version1 }} version and {{ version2 }} version.</p>
+	</div>
+</md-content>
+<md-content class="md-padding" layout="row" layout-align="center center">
+	<div flex-xs flex-gt-xs="50" layout="column">
+		<h3 class="md-title">2. Select Your Verse To Compare</h3>
+		<div layout-align="center center" flex-xs flex-gt-xs="30">
+			<md-input-container style="margin-right: 100px;">
+		        <label>Book</label>
+		        <md-select ng-change="getChapters(book)" ng-model="book">
+		          <md-option ng-repeat="book in books" value="{{ book.passage }}">{{ book.passage }}</md-option>
+		        </md-select>
+		      </md-input-container>
+		      <md-input-container style="margin-right: 100px;">
+		        <label>Chapter</label>
+		        <md-select ng-change="getVerses(book, chapter)" ng-model="chapter">
+		          <md-option ng-repeat="chapter in chapterNums" value="{{ chapter }}">{{ chapter }}</md-option>
+		        </md-select>
+		      </md-input-container>
+		      <md-input-container style="margin-right: 100px;">
+		        <label>Verse</label>
+		        <md-select ng-model="verse">
+		          <md-option ng-repeat="verse in verses" value="{{ verse }}">{{ verse }}</md-option>
+		        </md-select>
+		      </md-input-container>
+		</div>
+		<p ng-if="verse">You selected <strong>{{ book }}</strong> <strong>{{ verse }}</strong>:<strong>{{ chapter }}</strong></p>
+	</div>
+</md-content>
+<md-content class="md-padding" layout="row" layout-align="center center">
+	<div flex-xs flex-gt-xs="50" layout="column">
+		<h3 class="md-title">3. Click "GO" to Compare!</h3>
+		<section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+			<md-button class="md-raised md-primary">GO</md-button>
+		</section>
+	</div>
+</md-content>
