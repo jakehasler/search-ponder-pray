@@ -26,7 +26,7 @@ angular
         controllerAs: 'main'
       })
       .when('/compare/:v1/:v2/:book/:chapter/:verse', {
-        templateUrl: 'views/compare.html',
+        templateUrl: 'views/cards.html',
         controller: 'CompareCtrl',
         conrollerAs: 'compare'
       })

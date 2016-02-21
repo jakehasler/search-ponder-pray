@@ -1,77 +1,47 @@
-<md-content class="md-padding" layout="row" layout-wrap layout-align="center start" layout-xs="column">
-    <div flex="50" flex-sm="100" flex-xs="100" layout="column">
-      <md-card>
-        <md-card-title>
-          <md-card-title-text>
-            <span class="md-headline">Card with image</span>
-            <span class="md-subhead">Large</span>
-          </md-card-title-text>
-          <md-card-title-media>
-            <div class="md-media-lg card-media">
-              <img src="http://placehold.it/150x150" alt="">
+<md-content class="md-padding" layout-xs="column" layout="row" layout-align="center center">
+  <div flex-xs flex-gt-xs="80" layout="column">
+    <md-card>
+    <md-card-title>
+            <md-card-title-text>
+              <span class="md-subhead">Selected Verse:</span>
+              <span class="md-headline">{{ book }} {{ chapter }}:{{ verse }} </span>
+            </md-card-title-text>
+          </md-card-title>
+          <md-content class="md-padding" layout="row" layout-wrap layout-align="center start" layout-xs="column">
+            <div flex="50" flex-sm="100" flex-xs="100" layout="column">
+              <md-card>
+                <md-card-title>
+                  <md-card-title-text>
+                  <span class="md-headline">{{ v1 }}</span>
+                  <p>{{ ver1 }}</p>
+                  </md-card-title-text>
+                </md-card-title>
+              </md-card>
             </div>
-          </md-card-title-media>
-        </md-card-title>
-        <md-card-actions layout="row" layout-align="end center">
-          <md-button>Action 1</md-button>
-          <md-button>Action 2</md-button>
-        </md-card-actions>
-      </md-card>
-      <md-card>
-        <md-card-title>
-          <md-card-title-text>
-            <span class="md-headline">Card with  image</span>
-            <span class="md-subhead">Extra Large</span>
-          </md-card-title-text>
-        </md-card-title>
-        <md-card-content layout="row" layout-align="space-between">
-          <div class="md-media-xl card-media">
-            <img src="http://placehold.it/210x240" alt="">
-          </div>
-          <md-card-actions layout="column">
-            <md-button class="md-icon-button" aria-label="Favorite">
-              <ng-md-icon icon="favorite"></ng-md-icon>
-            </md-button>
-            <md-button class="md-icon-button" aria-label="Settings">
-              <ng-md-icon icon="menu"></ng-md-icon>
-            </md-button>
-            <md-button class="md-icon-button" aria-label="Share">
-              <ng-md-icon icon="share-arrow"></ng-md-icon>
-            </md-button>
-          </md-card-actions>
-        </md-card-content>
-      </md-card>
+            <div flex="50" flex-sm="100" flex-xs="100" layout="column">
+              <md-card>
+                <md-card-title>
+                  <md-card-title-text>
+                  <span class="md-headline">{{ v2 }}</span>
+                  <p>{{ ver2 }}</p>
+                  </md-card-title-text>
+                </md-card-title>
+              </md-card>
+            </div>
+          </md-content>
+    </md-card>
+  </div>
+
+</md-content>
+
+<md-content class="md-padding" layout="row" layout-wrap layout-align="center center" layout-xs="column">
+    <div flex="100" flex-sm="100" flex-xs="100" layout="column" layout-align="center center">
+      <md-button href="/#/"  class="md-primary md-raised" flex="100"  flex-gt-md="auto">
+      <h3 style="display: inline-block;">Compare Another Verse!</h3>
+      <md-button style="float: left;  background-color: #d6d6d6;" class="md-fab"> <ng-md-icon icon="arrow_back" style="fill: #646464;"></ng-md-icon></md-button>
+    </md-button>
     </div>
     <div flex="50" flex-sm="100" flex-xs="100" layout="column">
-      <md-card>
-        <md-card-title>
-          <md-card-title-text>
-            <span class="md-headline">Card with image</span>
-            <span class="md-subhead">Small</span>
-          </md-card-title-text>
-          <md-card-title-media>
-            <div class="md-media-sm card-media"></div>
-          </md-card-title-media>
-        </md-card-title>
-        <md-card-actions layout="row" layout-align="end center">
-          <md-button>Action 1</md-button>
-          <md-button>Action 2</md-button>
-        </md-card-actions>
-      </md-card>
-      <md-card>
-        <md-card-title>
-          <md-card-title-text>
-            <span class="md-headline">Card with image</span>
-            <span class="md-subhead">Medium</span>
-          </md-card-title-text>
-          <md-card-title-media>
-            <div class="md-media-md card-media"></div>
-          </md-card-title-media>
-        </md-card-title>
-        <md-card-actions layout="row" layout-align="end center">
-          <md-button>Action 1</md-button>
-          <md-button>Action 2</md-button>
-        </md-card-actions>
-      </md-card>
+      
     </div>
     </md-content>

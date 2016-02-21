@@ -26,12 +26,6 @@ angular.module('sppApp')
     ];
 
 
-    $scope.bible = {
-    	books: [ 'Matthew', 'Mark', 'Luke', 'John'],
-    	chapters: [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-    	verses: [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-    };
-
     $scope.versionsObj = [
       {
         option: 'English: King James Version',
@@ -74,6 +68,15 @@ angular.module('sppApp')
         value: 'almeida'
       }
     ];
+
+    $scope.version1 = $scope.versionsObj[0].option;
+
+    // TODO: Selected Versions to option
+    // TODO: Validation for "GO" Button
+    // TODO: Split New Testament & Old Testament
+    // TODO: Share/Save Comparison Button
+    // TODO: Differences highlighted between two verses
+    // TODO: Improve Styling - Add some images? Change Fonts?
 
 
     var BIBLIA_KEY = '659e75ea18d73db9a183c49008b26300';
@@ -118,7 +121,7 @@ angular.module('sppApp')
       };
 
       $scope.chapterNums = [];
-      for (var i = 0; i < $scope.chapters.length; i++) {
+      for (var i = 1; i < $scope.chapters.length; i++) {
         $scope.chapterNums.push(i);
       };
 
