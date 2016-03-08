@@ -28,7 +28,7 @@
 		        </md-select>
 		      </md-input-container>
 		</div>
-		<p ng-if="version2">You selected the {{ version1 }} version and {{ version2 }} version.</p>
+		<p ng-if="version2">You selected the {{ getVersionName(version1) }} version and {{ getVersionName(version2) }} version.</p>
 	</div>
 </md-content>
 <md-content class="md-padding" layout="row" layout-align="center center">
@@ -36,9 +36,15 @@
 		<h3 class="md-title">2. Select Your Verse To Compare</h3>
 		<div layout-align="center center" flex-xs flex-gt-xs="30">
 			<md-input-container style="margin-right: 100px;">
-		        <label>Book</label>
+		        <label>Old Testament</label>
 		        <md-select ng-change="getChapters(book)" ng-model="book">
-		          <md-option ng-repeat="book in books" value="{{ book.passage }}">{{ book.passage }}</md-option>
+		          <md-option ng-repeat="book in otBooks" value="{{ book.passage }}">{{ book.passage }}</md-option>
+		        </md-select>
+		      </md-input-container>
+		      <md-input-container style="margin-right: 100px;">
+		        <label>New Testament</label>
+		        <md-select ng-change="getChapters(book)" ng-model="book">
+		          <md-option ng-repeat="book in ntBooks" value="{{ book.passage }}">{{ book.passage }}</md-option>
 		        </md-select>
 		      </md-input-container>
 		      <md-input-container style="margin-right: 100px;">
@@ -61,7 +67,7 @@
 	<div flex-xs flex-gt-xs="50" layout="column">
 		<h3 class="md-title">3. Click "GO" to Compare!</h3>
 		<section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-			<md-button ng-click="compareView()" class="md-raised md-primary">GO</md-button>
+			<md-button ng-click="compareView($event)" class="md-raised md-primary">GO</md-button>
 		</section>
 	</div>
 </md-content>

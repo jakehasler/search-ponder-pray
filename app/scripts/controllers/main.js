@@ -8,7 +8,7 @@
  * Controller of the sppApp
  */
 angular.module('sppApp')
-  .controller('MainCtrl', function ($scope, $http, $location) {
+  .controller('MainCtrl', function ($scope, $http, $location, $mdDialog) {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -71,6 +71,15 @@ angular.module('sppApp')
 
     $scope.version1 = $scope.versionsObj[0].option;
 
+    $scope.getVersionName = function(abrev) {
+      $scope.versionsObj.forEach(function(version) {
+        if(version.value == abrev) {
+          console.log(version.option);
+          return version.option;
+        }
+      });
+    }
+
     // TODO: Selected Versions to option
     // TODO: Validation for "GO" Button
     // TODO: Split New Testament & Old Testament
@@ -92,6 +101,12 @@ angular.module('sppApp')
 
       $http.get(url + key).then(function success(res) {
         $scope.books = res.data.books;
+        $scope.otBooks = [];
+        $scope.ntBooks = [];
+        for (var i = 0; i < $scope.books.length; i++) {
+          if(i < 39) $scope.otBooks.push($scope.books[i]);
+          else $scope.ntBooks.push($scope.books[i]);
+        }
       });
     }
 
@@ -127,17 +142,32 @@ angular.module('sppApp')
 
     };
 
-    $scope.compareView = function() {
-      // if($scope.version1 && $scope.version2 && $scope.book && $scope.chapter && $scope.verse) {   
+    $scope.compareView = function(ev) {
+      if($scope.version1 && $scope.version2 && $scope.book && $scope.chapter && $scope.verse) {   
         var url = '/compare/' + $scope.version1 + '/' + $scope.version2 + '/' + $scope.book + '/' + $scope.chapter + '/' + $scope.verse;
         console.log(url);
         $location.path(url).replace();
-      // }
-      // else {
-      //   alert("Please Select the Options!");
-      // }
+      }
+      else {
+        $scope.showAlert(ev);
+      }
     }
 
+    $scope.showAlert = function(ev) {
+      // Appending dialog to document.body to cover sidenav in docs app
+      // Modal dialogs should fully cover application
+      // to prevent interaction outside of dialog
+      $mdDialog.show(
+        $mdDialog.alert()
+          .parent(angular.element(document.querySelector('#popupContainer')))
+          .clickOutsideToClose(true)
+          .title('Not Quite!')
+          .textContent('Please select all the options.')
+          .ariaLabel('Alert Dialog Demo')
+          .ok('Got it!')
+          .targetEvent(ev)
+      );
+    };
 
 
   });
