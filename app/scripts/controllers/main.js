@@ -71,18 +71,26 @@ angular.module('sppApp')
 
     $scope.version1 = $scope.versionsObj[0].option;
 
-    $scope.getVersionName = function(abrev) {
+    $scope.getVersionName = function() {
+      var v1;
+      var v2;
       $scope.versionsObj.forEach(function(version) {
-        if(version.value == abrev) {
-          console.log(version.option);
-          return version.option;
+        if(version.value == $scope.version1) {
+          v1 = version.option;
+        } else if(version.value == $scope.version2) {
+          v2 = version.option;
         }
+
       });
+      $scope.versionString = "You selected the " + v1 + " and " + v2 + "."
+      console.log($scope.versionString);
     }
 
+
+
     // TODO: Selected Versions to option
-    // TODO: Validation for "GO" Button
-    // TODO: Split New Testament & Old Testament
+    // TODO: Validation for "GO" Button - DONE
+    // TODO: Split New Testament & Old Testament - DONE
     // TODO: Share/Save Comparison Button
     // TODO: Differences highlighted between two verses
     // TODO: Improve Styling - Add some images? Change Fonts?
