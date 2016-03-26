@@ -7,7 +7,13 @@
               <span class="md-headline">{{ book }} {{ chapter }}:{{ verse }} </span>
             </md-card-title-text>
           </md-card-title>
-          <md-content class="md-padding" layout="row" layout-wrap layout-align="center start" layout-xs="column">
+         
+          <div flex="100" flex-sm="100" flex-xs="100" layout="row" style="text-align: center;" >
+            <div id="loader" ng-hide="ready" style="margin: 0 auto 25px auto; width: 50px; height: auto;">
+              <img style="width: 100%" src="/images/loader.gif" alt="">
+            </div>
+          </div>
+          <md-content ng-show="ready" class="md-padding" layout="row" layout-wrap layout-align="center start" layout-xs="column">
             <div flex="50" flex-sm="100" flex-xs="100" layout="column">
               <md-card>
                 <md-card-title>

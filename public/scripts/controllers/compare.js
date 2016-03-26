@@ -83,6 +83,7 @@ angular.module('sppApp')
     	verse = verse.replace(/;/g, '');
     	verse = JSON.parse(verse);
     	$scope.ver1 = verse.book[0].chapter[$scope.verse].verse;
+      $scope.ready = true;
     });
 
     $http.get(url + '&v=' + v2).then(function success(res) {
@@ -93,6 +94,6 @@ angular.module('sppApp')
     	$scope.ver2 = verse.book[0].chapter[$scope.verse].verse;
     });
 
-
+    $scope.ready = false;
 
   });
